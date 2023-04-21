@@ -34,7 +34,7 @@ public class FamilyTree
             // Add childNode to this node's children list. Also
             // set childNode's parent to this node.
         	children.add(childNode);
-        	childNode.parent = parent;
+        	childNode.parent = this;
         }
         
         
@@ -71,9 +71,11 @@ public class FamilyTree
             // the nodes of a tree is like traversing a linked list. If that isn’t clear,
             // draw a tree, mark any leaf node, and then mark its ancestors in order from
             // recent to ancient. Expect a question about this on the final exam.
-            while (parent != null) {
-            	ancestors.add(parent);
-            	parent = parent.parent;
+            TreeNode tempParent = parent;
+            
+            while (tempParent != null) {
+            	ancestors.add(tempParent);
+            	tempParent = tempParent.parent;
             }
 
             return ancestors;
